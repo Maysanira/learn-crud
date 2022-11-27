@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view("Mahasiswa.Index");
     }
 
     /**
@@ -23,7 +23,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mahasiswa.create');
     }
 
     /**
@@ -34,9 +34,20 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+        'nim'=>'required|min:9|max|9',
+        'nama'=>'required|min:3',
+        'jurusan'=> 'required|min:3',
+        ]);
+        $mahasiswa = new Mahasiswa;
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->jurusan = $request->jurusan;
+        $mahasiswa->save();
 
+        return to_route('mahasiswa.index')->with('success','Data Berhasil di tambahkan.');
+    }
+ 
     /**
      * Display the specified resource.
      *
