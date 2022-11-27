@@ -14,19 +14,19 @@
         <a href="{{route('mahasiswa.index')}}" class="btn btn-primary mb-3">Data Mahasiswa</a>
         <div class="card">
             <div class="card-body">
-                <form action='{{route('mahasiswa.store')}}' method='POST'>
+                <form action='{{ route('mahasiswa.update' , $mahasiswa->id) }}' method='POST'>
                     @csrf
                     <div class="mb-3">
                         <label for="nim" class="form-label">Nim</label>
-                        <input type="text" class="form-control" name="nim" id="nim">
+                        <input type="text" class="form-control" name="nim" value='{{$mahasiswa->nim}}'id="nim">
                         </div>  
                     <div class="mb-3">                                     
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama">
+                        <input type="text" class="form-control" name="nama" value='{{$mahasiswa->nama}}'id="nama">
                         </div>
                     <div class="mb-3">                                       
                         <label for="jurusan" class="form-label">Jurusan</label>
-                        <input type="text" class="form-control" name="jurusan" id="jurusan">
+                        <input type="text" class="form-control" name="jurusan"value='{{$mahasiswa->jurusan}}' id="jurusan">
                         </div>                                        
                         <button type="submit" class="btn btn-primary float -end">Simpan</button>
                 </form>

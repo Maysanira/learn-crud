@@ -1,4 +1,9 @@
-<!doctype html>
+
+
+
+
+<!do
+ctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,6 +15,7 @@
     
 <div class="container mt-5">
     <h1 class='text-center mb-5'>Data Mahasiswa</h1>
+    <a href="{{route('mahasiswa.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
     <div class="card">
         <div class="card-body">
             <table class='table'>

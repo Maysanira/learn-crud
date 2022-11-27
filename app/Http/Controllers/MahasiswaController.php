@@ -35,7 +35,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'nim'=>'required|min:9|max|9',
+        'nim'=>'required|min:9|max:9',
         'nama'=>'required|min:3',
         'jurusan'=> 'required|min:3',
         ]);
@@ -67,7 +67,9 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('mahasiswa.edit')->with([
+            'mahasiswa'=>Mahasiswa::find($id),
+        ])
     }
 
     /**
@@ -79,7 +81,19 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nim'=>'required|min:9|max:9',
+            'nama'=>'required|min:3',
+            'jurusan'=> 'required|min:3',
+            ]);
+            $mahasiswa = Mahasiswa::find($id);
+            $mahasiswa->nim = $request->nim;
+            $mahasiswa->nama = $request->nama;
+            $mahasiswa->jurusan = $request->jurusan;
+            $mahasiswa->save();
+    
+            return to_route('mahasiswa.index')->with('success','Data Berhasil di edit.');
+       
     }
 
     /**
